@@ -8,10 +8,12 @@
     class Medico extends Pessoa{
         protected string $especialidade;
         protected float $salario;
+        public Endereco $end;
 
         public function __construct(string $cpf,string $nome,string $telefone,string $especialidade,float $salario,Endereco $endereco)
         {
             parent::__construct($cpf,$nome,$telefone,$endereco);
+            $this->end = $endereco;
             $this->especialidade = $especialidade;
             $this->salario = $salario;
         }//Fim do construtor
@@ -28,7 +30,7 @@
 
         public function imprimir():string
         {
-            return parent::imprimir()."<br>Especialidade: ".$this->especialidade."<br>Salário: ".$this->salario;
+            return parent::imprimir()."<br>Especialidade: ".$this->especialidade."<br>Salário: ".$this->salario.$this->end->imprimir();
         }//Fim do imprimir
     }
 ?>

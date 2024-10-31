@@ -9,6 +9,7 @@
         protected string $carteirinha;
         protected string $alergia;
         protected string $tipoSanguineo;
+        public Endereco $end;
 
         public function __construct(string $cpf,
                                     string $nome,
@@ -19,7 +20,8 @@
                                     Endereco $endereco)
         {
             parent::__construct($cpf,$nome,$telefone,$endereco);
-            $this->carteirinha = $cargo;
+            $this->end = $endereco;
+            $this->carteirinha = $carteirinha;
             $this->alergia = $alergia;
             $this->tipoSanguineo = $tipoSanguineo;
         }//Fim do construtor
@@ -36,7 +38,8 @@
 
         public function imprimir():string
         {
-            return parent::imprimir()."<br>Nº da carteirinha: ".$this->carteirinha."<br>Tem alergias: ".$this->alergia."<br>Tipo sanguineo: ".$this->tipoSanguineo;
+            return parent::imprimir()."<br>Nº da carteirinha: ".$this->carteirinha."<br>Tem alergias: ".$this->alergia."<br>Tipo sanguineo: ".$this->tipoSanguineo.
+                   $this->end->imprimir();
         }//Fim do imprimir
     }//Fim da classe
 ?>
